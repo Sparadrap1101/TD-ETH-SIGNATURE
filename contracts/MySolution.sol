@@ -1,11 +1,24 @@
 pragma solidity ^0.6.2;
 
 import "./IExerciceSolution.sol";
+import {MyErc721} from "./MyErc721.sol";
 
 contract MySolution is IExerciceSolution {
-    function ERC721Address() external override returns (address) {}
+    MyErc721 public myErc721Contract;
 
-    function mintATokenForMe() external override returns (uint256) {}
+    constructor(string memory name, string memory symbol) public {
+        myErc721Contract = new MyErc721(name, symbol);
+    }
+
+    function ERC721Address() external override returns (address) {
+        return address(myErc721Contract);
+    }
+
+    function mintATokenForMe() external override returns (uint256) {
+        uint256 tokenID = myErc721Contract.mint(msg.sender);
+
+        return tokenID;
+    }
 
     function mintATokenForMeWithASignature(
         bytes calldata _signature
