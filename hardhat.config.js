@@ -10,6 +10,7 @@ require("dotenv").config();
 const GOERLI_RPC_URL =
   process.env.GOERLI_RPC_URL || "https://eth-goerli.alchemyapi";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x";
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 
 module.exports = {
   defaultNetwork: "hardhat",
@@ -34,6 +35,12 @@ module.exports = {
     },
     player: {
       default: 1,
+    },
+  },
+
+  etherscan: {
+    apiKey: {
+      goerli: ETHERSCAN_API_KEY,
     },
   },
 

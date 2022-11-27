@@ -1,18 +1,17 @@
 const { network, ethers } = require("hardhat");
+const { verify } = require("../utils/verify.js");
 
 module.exports = async function ({ getNamedAccounts, deployments }) {
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
-  const args = [];
+  const args = ["Stars", "STAR"];
 
-  const contract = await deploy("Contract", {
+  const contract = await deploy("MySolution", {
     from: deployer,
     args: args,
     log: true,
     waitConfirmations: 6,
   });
-
-  const { verify } = require("../utils/verify.js");
 
   const developmentChains = ["hardhat", "localhost"];
 
