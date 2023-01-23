@@ -17,6 +17,7 @@
     "solidity-coverage": "^0.8.2"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "3.0.0"
+    "@openzeppelin/contracts": "3.0.0",
+    "web3": "^1.8.1"
   }
 }
